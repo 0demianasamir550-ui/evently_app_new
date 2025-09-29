@@ -1,29 +1,29 @@
-// lib/events/widgets/add_event_button.dart
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:evently_app_new/providers/app_theme.dart';
-import 'package:evently_app_new/providers/app_language_provider.dart';
 import 'package:evently_app_new/l10n/app_localizations.dart';
+import 'package:evently_app_new/events/add_event.dart';
 
 class AddEventButton extends StatelessWidget {
   final TextEditingController titleController;
+  final TextEditingController descriptionController;
   final DateTime? selectedDate;
   final TimeOfDay? selectedTime;
   final String? selectedLocation;
+  final String? buttonText;
 
   const AddEventButton({
     super.key,
     required this.titleController,
+    required this.descriptionController,
     required this.selectedDate,
     required this.selectedTime,
     required this.selectedLocation,
+    this.buttonText,
   });
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<AppThemeProvider>(context);
-    final languageProvider = Provider.of<AppLanguageProvider>(context);
     final localizations = AppLocalizations.of(context)!;
+    final text = buttonText ?? localizations.create_event;
 
     return SizedBox(
       width: double.infinity,
@@ -36,40 +36,33 @@ class AddEventButton extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          if (titleController.text.isEmpty) {
+          if (titleController.text.isEmpty ||
+              descriptionController.text.isEmpty ||
+              selectedDate == null ||
+              selectedTime == null ||
+              selectedLocation == null ||
+              selectedLocation!.isEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(localizations.fill_all_fields + " (Title)")),
-            );
-            return;
-          }
-          if (selectedDate == null) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(localizations.fill_all_fields + " (Date)")),
-            );
-            return;
-          }
-          if (selectedTime == null) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(localizations.fill_all_fields + " (Time)")),
-            );
-            return;
-          }
-          if (selectedLocation == null || selectedLocation!.isEmpty) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(localizations.fill_all_fields + " (Location)")),
+              SnackBar(content: Text(localizations.fill_all_fields)),
             );
             return;
           }
 
-          // لو كل الحقول صح، اعمل Refresh لنفس الصفحة
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Event Added Successfully!")),
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddEventPage(
+                title: titleController.text,
+                description: descriptionController.text,
+                date: selectedDate,
+                time: selectedTime,
+                location: selectedLocation,
+              ),
+            ),
           );
-          // إعادة بناء الصفحة
-          (context as Element).reassemble();
         },
         child: Text(
-          localizations.create_event,
+          text,
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w500,

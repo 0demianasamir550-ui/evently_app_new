@@ -55,6 +55,9 @@
   "supervised_by": "Supervised by Mohamed Nabil",
   "login_with_google": "Login With Google",
   "create_event": "Create Event",
+  "edit_event": "Edit Event",
+  "save_changes": "Save Changes",
+  "event_updated": "Event Updated",
   "category_bookClub": "Book Club",
   "category_sport": "Sport",
   "category_birthday": "Birthday",
@@ -78,5 +81,11 @@
   "please_enter_description": "Please enter description",
   "please_select_date": "Please select date",
   "please_select_time": "Please select time",
-  "please_select_location": "Please select location"
+  "please_select_location": "Please select location",
+  "edit_event" : "Edit Event",
+  "save_changes" : "Save Changes",
+  "event_updated" : "Event Updated",
+  "time" : "Time",
+  "date" : "Date",
+  "add_event" : "Add Event"
 }

@@ -11,57 +11,42 @@ import 'package:evently_app_new/providers/app_language_provider.dart';
 import 'package:evently_app_new/l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() {
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => AppThemeProvider()),
-        ChangeNotifierProvider(create: (_) => AppLanguageProvider()),
-      ],
-      child: const MyApp(),
-    ),
-  );
-}
+class AddEventPage extends StatefulWidget {
+  final String? title;
+  final String? description;
+  final DateTime? date;
+  final TimeOfDay? time;
+  final String? location;
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final themeProvider = Provider.of<AppThemeProvider>(context);
-    final languageProvider = Provider.of<AppLanguageProvider>(context);
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      locale: Locale(languageProvider.appLanguage),
-      supportedLocales: const [Locale('en'), Locale('ar')],
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
-      themeMode: themeProvider.isDarkMode() ? ThemeMode.dark : ThemeMode.light,
-      home: const CreateEventPage(),
-    );
-  }
-}
-
-class CreateEventPage extends StatefulWidget {
-  const CreateEventPage({super.key});
+  const AddEventPage({
+    super.key,
+    this.title,
+    this.description,
+    this.date,
+    this.time,
+    this.location,
+  });
 
   @override
-  State<CreateEventPage> createState() => _CreateEventPageState();
+  State<AddEventPage> createState() => _AddEventPageState();
 }
 
-class _CreateEventPageState extends State<CreateEventPage> {
-  final TextEditingController titleController = TextEditingController();
-  final TextEditingController descriptionController = TextEditingController();
+class _AddEventPageState extends State<AddEventPage> {
+  late TextEditingController titleController;
+  late TextEditingController descriptionController;
   DateTime? selectedDate;
   TimeOfDay? selectedTime;
   String? selectedLocation;
+
+  @override
+  void initState() {
+    super.initState();
+    titleController = TextEditingController(text: widget.title ?? '');
+    descriptionController = TextEditingController(text: widget.description ?? '');
+    selectedDate = widget.date;
+    selectedTime = widget.time;
+    selectedLocation = widget.location;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +69,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
                   width: double.infinity,
                   child: Center(
                     child: Text(
-                      localizations.create_event,
+                      localizations.add_event, // بالضبط من الملف
                       style: const TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w400,
@@ -134,7 +119,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
                   selectedDate: selectedDate,
                   selectedTime: selectedTime,
                   selectedLocation: selectedLocation,
-                  buttonText: localizations.edit_event,
+                  buttonText: localizations.save_changes, // بالضبط من الملف
                 ),
                 const SizedBox(height: 24),
               ],

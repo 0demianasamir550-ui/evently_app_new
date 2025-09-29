@@ -55,6 +55,9 @@
   "supervised_by": "تحت اشراف محمد نبيل",
   "login_with_google": "تسجيل الدخول باستخدام جوجل",
   "create_event": "انشاء حدث",
+  "edit_event": "تعديل الحدث",
+  "save_changes": "حفظ التغييرات",
+  "event_updated": "تم تحديث الحدث",
   "category_bookClub": "نادي الكتاب",
   "category_sport": "رياضة",
   "category_birthday": "عيد ميلاد",
@@ -78,5 +81,11 @@
   "please_enter_description": "الرجاء إدخال الوصف",
   "please_select_date": "الرجاء اختيار التاريخ",
   "please_select_time": "الرجاء اختيار الوقت",
-  "please_select_location": "الرجاء اختيار الموقع"
+  "please_select_location": "الرجاء اختيار الموقع",
+  "edit_event" : "تعديل الحدث",
+  "save_changes" : "حفظ التغيرات",
+  "event_updated" : "تم تحديث الحدث",
+  "time" : "الوقت",
+  "date" : "التاريخ",
+  "add_event" : "اضافه حدث"
 }

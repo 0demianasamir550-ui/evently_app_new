@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:evently_app_new/providers/app_theme.dart';
+import 'package:evently_app_new/l10n/app_localizations.dart';
 
-// ---------------- WIDGET ----------------
 class RectangleTitleDescriptionWidget extends StatefulWidget {
-  final TextEditingController? controller;
+  final TextEditingController titleController;
+  final TextEditingController descriptionController;
 
-  const RectangleTitleDescriptionWidget({super.key, this.controller});
+  const RectangleTitleDescriptionWidget({
+    super.key,
+    required this.titleController,
+    required this.descriptionController,
+  });
 
   @override
   State<RectangleTitleDescriptionWidget> createState() =>
@@ -15,18 +18,10 @@ class RectangleTitleDescriptionWidget extends StatefulWidget {
 
 class _RectangleTitleDescriptionWidgetState
     extends State<RectangleTitleDescriptionWidget> {
-  late final TextEditingController titleController;
-  final TextEditingController descriptionController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    titleController = widget.controller ?? TextEditingController();
-  }
-
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final localizations = AppLocalizations.of(context)!;
 
     final borderColor = isDark ? const Color(0xFF5669FF) : const Color(0xFF7B7B7B);
     final labelColor = isDark ? Colors.white : Colors.black;
@@ -37,13 +32,11 @@ class _RectangleTitleDescriptionWidgetState
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Title",
+          localizations.title,
           style: TextStyle(
             fontFamily: 'Inter',
             fontSize: 16,
             fontWeight: FontWeight.w500,
-            height: 1.0,
-            letterSpacing: 0,
             color: labelColor,
           ),
         ),
@@ -67,11 +60,11 @@ class _RectangleTitleDescriptionWidgetState
               const SizedBox(width: 8),
               Expanded(
                 child: TextField(
-                  controller: titleController,
+                  controller: widget.titleController,
                   style: TextStyle(color: labelColor, fontSize: 16),
                   decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: "Event Title",
+                    hintText: localizations.please_enter_title,
                     hintStyle: TextStyle(color: placeholderColor, fontSize: 16),
                   ),
                 ),
@@ -81,13 +74,11 @@ class _RectangleTitleDescriptionWidgetState
         ),
         const SizedBox(height: 16),
         Text(
-          "Description",
+          localizations.description,
           style: TextStyle(
             fontFamily: 'Inter',
             fontSize: 16,
             fontWeight: FontWeight.w500,
-            height: 1.0,
-            letterSpacing: 0,
             color: labelColor,
           ),
         ),
@@ -101,13 +92,13 @@ class _RectangleTitleDescriptionWidgetState
             border: Border.all(color: borderColor, width: 1),
           ),
           child: TextField(
-            controller: descriptionController,
+            controller: widget.descriptionController,
             maxLines: null,
             expands: true,
             style: TextStyle(color: labelColor, fontSize: 16),
             decoration: InputDecoration(
               border: InputBorder.none,
-              hintText: "Event Description",
+              hintText: localizations.please_enter_description,
               hintStyle: TextStyle(color: placeholderColor, fontSize: 16),
             ),
           ),

@@ -175,6 +175,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get create_event => 'Create Event';
 
   @override
+  String get edit_event => 'Edit Event';
+
+  @override
+  String get save_changes => 'Save Changes';
+
+  @override
+  String get event_updated => 'Event Updated';
+
+  @override
   String get category_bookClub => 'Book Club';
 
   @override
@@ -242,4 +251,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get please_select_location => 'Please select location';
+
+  @override
+  String get time => 'Time';
+
+  @override
+  String get date => 'Date';
+
+  @override
+  String get add_event => 'Add Event';
 }

@@ -422,6 +422,24 @@ abstract class AppLocalizations {
   /// **'Create Event'**
   String get create_event;
 
+  /// No description provided for @edit_event.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Event'**
+  String get edit_event;
+
+  /// No description provided for @save_changes.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Changes'**
+  String get save_changes;
+
+  /// No description provided for @event_updated.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Updated'**
+  String get event_updated;
+
   /// No description provided for @category_bookClub.
   ///
   /// In en, this message translates to:
@@ -559,6 +577,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please select location'**
   String get please_select_location;
+
+  /// No description provided for @time.
+  ///
+  /// In en, this message translates to:
+  /// **'Time'**
+  String get time;
+
+  /// No description provided for @date.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get date;
+
+  /// No description provided for @add_event.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Event'**
+  String get add_event;
 }
 
 class _AppLocalizationsDelegate

@@ -4,7 +4,8 @@ import 'package:evently_app_new/providers/app_theme.dart';
 import 'package:evently_app_new/providers/app_language_provider.dart';
 import 'package:evently_app_new/home/tabs/profile/profile_tab.dart';
 import 'package:evently_app_new/home/tabs/profile/favorite_tab.dart';
-import 'package:evently_app_new/home/tabs/home_tab.dart'; // ✅ ضفنا HomeTab
+import 'package:evently_app_new/home/tabs/home_tab.dart';
+import 'package:evently_app_new/events/create_event.dart'; // ✅ صفحة CreateEventPage
 
 class MyAppWidget extends StatefulWidget {
   const MyAppWidget({super.key});
@@ -16,7 +17,7 @@ class _MyAppWidgetState extends State<MyAppWidget> {
   int selectedIndex = 0;
 
   final List<Widget> pages = [
-    const HomeTab(), // ✅ بدل Center بـ HomeTab
+    const HomeTab(),
     const Center(child: Text("Map")),
     const FavoriteTab(),
     const ProfileTab(),
@@ -102,20 +103,28 @@ class _MyAppWidgetState extends State<MyAppWidget> {
           ),
           Positioned(
             bottom: 20,
-            child: Container(
-              width: 72,
-              height: 72,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-              ),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  CreateEventPage()), // ✅ استدعاء CreateEventPage
+                );
+              },
               child: Container(
-                margin: const EdgeInsets.all(4),
-                decoration: BoxDecoration(
+                width: 72,
+                height: 72,
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: isDark ? const Color(0xFF101127) : const Color(0xFF5669FF),
+                  color: Colors.white,
                 ),
-                child: const Icon(Icons.add, color: Colors.white, size: 32),
+                child: Container(
+                  margin: const EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: isDark ? const Color(0xFF101127) : const Color(0xFF5669FF),
+                  ),
+                  child: const Icon(Icons.add, color: Colors.white, size: 32),
+                ),
               ),
             ),
           ),

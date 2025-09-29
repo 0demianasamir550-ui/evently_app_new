@@ -175,6 +175,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get create_event => 'انشاء حدث';
 
   @override
+  String get edit_event => 'تعديل الحدث';
+
+  @override
+  String get save_changes => 'حفظ التغيرات';
+
+  @override
+  String get event_updated => 'تم تحديث الحدث';
+
+  @override
   String get category_bookClub => 'نادي الكتاب';
 
   @override
@@ -242,4 +251,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get please_select_location => 'الرجاء اختيار الموقع';
+
+  @override
+  String get time => 'الوقت';
+
+  @override
+  String get date => 'التاريخ';
+
+  @override
+  String get add_event => 'اضافه حدث';
 }
