@@ -7,16 +7,16 @@ import 'package:evently_app_new/events/widgets/rectangle_title_description.dart'
 import 'package:evently_app_new/events/widgets/location.dart';
 import 'package:evently_app_new/providers/app_theme.dart';
 import 'package:evently_app_new/l10n/app_localizations.dart';
-import 'event_details.dart'; // تأكد من مسار الصفحة
+import 'event_details.dart'; // تأكدي من مسار الصفحة
 
-class AddEventPage extends StatefulWidget {
+class EditEventPage extends StatefulWidget {
   final String? title;
   final String? description;
   final DateTime? date;
   final TimeOfDay? time;
   final String? location;
 
-  const AddEventPage({
+  const EditEventPage({
     super.key,
     this.title,
     this.description,
@@ -26,10 +26,10 @@ class AddEventPage extends StatefulWidget {
   });
 
   @override
-  State<AddEventPage> createState() => _AddEventPageState();
+  State<EditEventPage> createState() => _EditEventPageState();
 }
 
-class _AddEventPageState extends State<AddEventPage> {
+class _EditEventPageState extends State<EditEventPage> {
   late TextEditingController titleController;
   late TextEditingController descriptionController;
   DateTime? selectedDate;
@@ -67,7 +67,7 @@ class _AddEventPageState extends State<AddEventPage> {
                   width: double.infinity,
                   child: Center(
                     child: Text(
-                      localizations.add_event,
+                      localizations.edit_event,
                       style: const TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w400,
@@ -144,7 +144,7 @@ class _AddEventPageState extends State<AddEventPage> {
                       }
                     },
                     child: Text(
-                      localizations.save_changes,
+                      localizations.update_event, // هنا الاسم الجديد للزرار
                       style: const TextStyle(fontSize: 18, color: Colors.white),
                     ),
                   ),

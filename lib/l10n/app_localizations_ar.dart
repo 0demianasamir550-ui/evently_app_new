@@ -260,4 +260,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get add_event => 'اضافه حدث';
+
+  @override
+  String get update_event => 'تحديث الحدث';
 }

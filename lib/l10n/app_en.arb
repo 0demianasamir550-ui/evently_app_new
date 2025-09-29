@@ -87,5 +87,6 @@
   "event_updated" : "Event Updated",
   "time" : "Time",
   "date" : "Date",
-  "add_event" : "Add Event"
+  "add_event" : "Add Event",
+  "update_event" : "Update Event"
 }

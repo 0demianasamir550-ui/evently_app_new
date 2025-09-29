@@ -52,7 +52,6 @@ class OnboardingScreen1 extends StatelessWidget {
     var langProvider = Provider.of<AppLanguageProvider>(context);
     final loc = AppLocalizations.of(context)!;
 
-    // هل اللغة إنجليزي؟ نستخدمها لتحديد ترتيب العناصر
     final bool isEnglish = langProvider.appLanguage == 'en';
 
     return Scaffold(
@@ -64,7 +63,6 @@ class OnboardingScreen1 extends StatelessWidget {
           children: [
             const SizedBox(height: 50),
 
-            // اللوجو + كلمة Evently
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -92,7 +90,6 @@ class OnboardingScreen1 extends StatelessWidget {
             ),
 
             const SizedBox(height: 40),
-            // الصورة
             Center(
               child: Image.asset(
                 themeProvider.isDarkMode()
@@ -105,7 +102,6 @@ class OnboardingScreen1 extends StatelessWidget {
             ),
 
             const SizedBox(height: 20),
-            // العنوان تحت الصورة
             Text(
               loc.personalize_experience,
               textAlign: TextAlign.center,
@@ -120,7 +116,6 @@ class OnboardingScreen1 extends StatelessWidget {
             ),
 
             const SizedBox(height: 10),
-            // الجملة الجديدة تحت العنوان
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Text(
@@ -138,14 +133,13 @@ class OnboardingScreen1 extends StatelessWidget {
 
             const Spacer(),
 
-            // 🔹 Language row (ترتيب ديناميكي حسب اللغة)
+            // 🔹 Language row
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: isEnglish
                     ? [
-                  // لو إنجليزي: النص على الشمال والويجت على اليمين
                   Text(
                     loc.language,
                     style: const TextStyle(
@@ -162,7 +156,6 @@ class OnboardingScreen1 extends StatelessWidget {
                   ),
                 ]
                     : [
-                  // لو عربي: الويجت على الشمال والنص على اليمين
                   lang_widget.LanguageToggle(
                     selectedLanguage: langProvider.appLanguage,
                     onChanged: (lang) {
@@ -181,14 +174,13 @@ class OnboardingScreen1 extends StatelessWidget {
               ),
             ),
 
-            // 🔹 Theme row (ترتيب ديناميكي حسب اللغة)
+            // 🔹 Theme row (التعديل لحل الايرور)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: isEnglish
                     ? [
-                  // لو إنجليزي: النص على الشمال والويجت على اليمين
                   Text(
                     loc.theme,
                     style: const TextStyle(
@@ -200,21 +192,15 @@ class OnboardingScreen1 extends StatelessWidget {
                   theme_widget.ThemeToggle(
                     isDark: themeProvider.isDarkMode(),
                     onChanged: (dark) {
-                      // نستخدم changeTheme في الـ provider
-                      themeProvider.changeTheme(
-                        dark ? ThemeMode.dark : ThemeMode.light,
-                      );
+                      themeProvider.changeTheme(dark ? ThemeMode.dark : ThemeMode.light);
                     },
                   ),
                 ]
                     : [
-                  // لو عربي: الويجت على الشمال والنص على اليمين
                   theme_widget.ThemeToggle(
                     isDark: themeProvider.isDarkMode(),
                     onChanged: (dark) {
-                      themeProvider.changeTheme(
-                        dark ? ThemeMode.dark : ThemeMode.light,
-                      );
+                      themeProvider.changeTheme(dark ? ThemeMode.dark : ThemeMode.light);
                     },
                   ),
                   Text(
@@ -229,7 +215,6 @@ class OnboardingScreen1 extends StatelessWidget {
               ),
             ),
 
-            // زر Let's Start
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
               child: InkWell(

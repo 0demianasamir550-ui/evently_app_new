@@ -87,5 +87,6 @@
   "event_updated" : "تم تحديث الحدث",
   "time" : "الوقت",
   "date" : "التاريخ",
-  "add_event" : "اضافه حدث"
+  "add_event" : "اضافه حدث",
+  "update_event" : "تحديث الحدث"
 }
