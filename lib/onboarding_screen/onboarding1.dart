@@ -3,9 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:evently_app_new/providers/app_theme.dart';
 import 'package:evently_app_new/providers/app_language_provider.dart';
 import 'package:evently_app_new/l10n/app_localizations.dart';
-import 'package:evently_app_new/onboarding_screen/onboarding2.dart'; // استيراد الصفحة الثانية
-
-// import بالـ alias علشان نتفادى أي تضارب بأسماء الويجتس
+import 'package:evently_app_new/onboarding_screen/onboarding2.dart';
 import '../home/widgets/language_toggle.dart' as lang_widget;
 import '../home/widgets/theme_toggle.dart' as theme_widget;
 
@@ -35,7 +33,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       themeMode: themeProvider.isDarkMode() ? ThemeMode.dark : ThemeMode.light,
-      locale: Locale(langProvider.appLanguage), // ربط اللغة بالـ provider
+      locale: Locale(langProvider.appLanguage),
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       home: const OnboardingScreen1(),
@@ -174,7 +172,6 @@ class OnboardingScreen1 extends StatelessWidget {
               ),
             ),
 
-            // 🔹 Theme row (التعديل لحل الايرور)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
               child: Row(

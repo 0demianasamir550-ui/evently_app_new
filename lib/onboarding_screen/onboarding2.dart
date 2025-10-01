@@ -20,7 +20,7 @@ class OnboardingScreen2 extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // ===== Logo + Evently =====
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -48,7 +48,7 @@ class OnboardingScreen2 extends StatelessWidget {
 
               const SizedBox(height: 30),
 
-              // ===== الصورة الكبيرة (واحدة فقط) =====
+
               Center(
                 child: Image.asset(
                   'assets/images/image_two.png',
@@ -60,7 +60,7 @@ class OnboardingScreen2 extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              // ===== الجملة الرئيسية =====
+
               Text(
                 loc.find_events_that_inspire,
                 textAlign: TextAlign.center,
@@ -76,7 +76,7 @@ class OnboardingScreen2 extends StatelessWidget {
 
               const SizedBox(height: 25),
 
-              // ===== الجملة الثانية حسب الـ Theme =====
+
               Text(
                 loc.dive_into_world_of_events,
                 textAlign: TextAlign.center,
@@ -91,7 +91,7 @@ class OnboardingScreen2 extends StatelessWidget {
 
               const Spacer(),
 
-              // ===== النقاط الثلاثة =====
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(3, (index) {
@@ -110,7 +110,7 @@ class OnboardingScreen2 extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              // ===== السهم الأيمن =====
+
               Align(
                 alignment: Alignment.centerRight,
                 child: InkWell(

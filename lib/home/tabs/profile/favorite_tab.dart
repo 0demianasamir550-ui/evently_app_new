@@ -11,7 +11,7 @@ class FavoriteTab extends StatefulWidget {
 }
 
 class _FavoriteTabState extends State<FavoriteTab> {
-  // حالة القلب لكل مستطيل
+
   List<bool> isFavorited = [false, false, false];
 
   @override
@@ -21,7 +21,7 @@ class _FavoriteTabState extends State<FavoriteTab> {
     final isDark = themeProvider.isDarkMode();
     final isArabic = languageProvider.appLanguage == 'ar';
 
-    // الترجمات حسب اللغة
+
     final searchHint = isArabic ? 'ابحث عن حدث' : 'Search for Event';
     final nowLabel = isArabic ? 'الآن' : 'Now';
     final birthdayText = isArabic ? 'هذه حفلة عيد ميلاد' : 'This is Birthday Party';
@@ -32,11 +32,11 @@ class _FavoriteTabState extends State<FavoriteTab> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end, // نزول المستطيلات قبل الـ bottom
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             const SizedBox(height: 16),
 
-            // المستطيل الأول - Search
+
             Container(
               width: 361,
               height: 56,
@@ -76,7 +76,7 @@ class _FavoriteTabState extends State<FavoriteTab> {
 
             const SizedBox(height: 16),
 
-            // المستطيلات الثلاثة
+
             eventCardWidget(
               index: 0,
               isDark: isDark,
@@ -107,7 +107,7 @@ class _FavoriteTabState extends State<FavoriteTab> {
               isArabic: isArabic,
             ),
 
-            const SizedBox(height: 16), // مسافة بسيطة فوق الـ bottom
+            const SizedBox(height: 16),
           ],
         ),
       ),
@@ -134,7 +134,7 @@ class _FavoriteTabState extends State<FavoriteTab> {
       ),
       child: Stack(
         children: [
-          // الصورة الخلفية
+
           Positioned.fill(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16),
@@ -144,7 +144,7 @@ class _FavoriteTabState extends State<FavoriteTab> {
               ),
             ),
           ),
-          // المربع الصغير بالرقم والكلمة
+
           Positioned(
             top: 8,
             left: 8,
@@ -177,7 +177,7 @@ class _FavoriteTabState extends State<FavoriteTab> {
             ),
           ),
 
-          // المستطيل السفلي للنص والقلب
+
           Positioned(
             bottom: 0,
             left: 0,

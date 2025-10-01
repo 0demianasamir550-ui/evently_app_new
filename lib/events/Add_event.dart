@@ -7,7 +7,7 @@ import 'package:evently_app_new/events/widgets/rectangle_title_description.dart'
 import 'package:evently_app_new/events/widgets/location.dart';
 import 'package:evently_app_new/providers/app_theme.dart';
 import 'package:evently_app_new/l10n/app_localizations.dart';
-import 'event_details.dart'; // تأكد من مسار الصفحة
+import 'event_details.dart';
 
 class AddEventPage extends StatefulWidget {
   final String? title;

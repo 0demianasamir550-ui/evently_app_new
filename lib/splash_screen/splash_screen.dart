@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:evently_app_new/providers/app_theme.dart';
 import 'package:evently_app_new/providers/app_language_provider.dart';
-import 'package:evently_app_new/onboarding_screen/onboarding1.dart'; // استيراد الصفحة الأولى من Onboarding
+import 'package:evently_app_new/onboarding_screen/onboarding1.dart';
 import 'package:evently_app_new/l10n/app_localizations.dart';
 
 void main() {
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           darkTheme: ThemeData.dark(),
           themeMode:
           themeProvider.isDarkMode() ? ThemeMode.dark : ThemeMode.light,
-          locale: Locale(languageProvider.appLanguage), // استخدم الـ String مباشرة
+          locale: Locale(languageProvider.appLanguage),
           supportedLocales: const [
             Locale('en'),
             Locale('ar'),
@@ -55,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // تأخير 5 ثواني ثم الانتقال إلى OnboardingScreen1
+
     Future.delayed(const Duration(seconds: 5), () {
       Navigator.pushReplacement(
         context,
@@ -77,7 +77,6 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             const Spacer(flex: 3),
 
-            // ====== اللوجو الرئيسي ======
             Image.asset(
               'assets/images/logo_splash_screen.png',
               width: 136,
@@ -88,7 +87,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
             const SizedBox(height: 20),
 
-            // ====== نص Evently ======
+
             Text(
               AppLocalizations.of(context)?.evently ?? 'Evently',
               textAlign: TextAlign.center,
@@ -104,7 +103,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
             const Spacer(flex: 4),
 
-            // ====== الصورة السفلية route_logo.png بلون #5669FF ======
+
             Image.asset(
               'assets/images/route_logo.png',
               width: 136.23,
@@ -115,10 +114,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
             const SizedBox(height: 5),
 
-            // ====== نص Supervised by Mohamed Nabil ======
+
             Padding(
               padding: EdgeInsets.only(
-                  right: screenWidth * 0.25, // تحريك الجملة للشمال شوية
+                  right: screenWidth * 0.25,
                   bottom: screenHeight * 0.02),
               child: Align(
                 alignment: Alignment.centerRight,

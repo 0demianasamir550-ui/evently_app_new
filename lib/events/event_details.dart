@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'edit_event.dart'; // تأكدي من مسار الصفحة
+import 'edit_event.dart';
 
 class EventDetailsPage extends StatelessWidget {
   final String title;
@@ -34,7 +34,7 @@ class EventDetailsPage extends StatelessWidget {
           children: [
             const SizedBox(height: 24),
 
-            // Header: سهم - Event Details - القلم/الزبالة
+
             Row(
               children: [
                 IconButton(
@@ -55,7 +55,7 @@ class EventDetailsPage extends StatelessWidget {
                 const Spacer(),
                 Row(
                   children: [
-                    // أيقونة القلم
+
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -92,7 +92,7 @@ class EventDetailsPage extends StatelessWidget {
 
             const SizedBox(height: 32),
 
-            // العنوان
+
             Text(
               title,
               style: const TextStyle(
@@ -105,7 +105,7 @@ class EventDetailsPage extends StatelessWidget {
 
             const SizedBox(height: 24),
 
-            // المستطيل الأول: الوقت والتاريخ
+
             Container(
               width: double.infinity,
               height: 64,
@@ -139,7 +139,7 @@ class EventDetailsPage extends StatelessWidget {
 
             const SizedBox(height: 12),
 
-            // المستطيل الثاني: Location
+
             Container(
               width: double.infinity,
               height: 64,
@@ -165,7 +165,7 @@ class EventDetailsPage extends StatelessWidget {
 
             const SizedBox(height: 16),
 
-            // مربع الخريطة
+
             Container(
               width: double.infinity,
               height: 250,
@@ -181,7 +181,7 @@ class EventDetailsPage extends StatelessWidget {
 
             const SizedBox(height: 16),
 
-            // وصف الحدث
+
             Text(
               description,
               style: TextStyle(fontSize: 16, color: descriptionColor),

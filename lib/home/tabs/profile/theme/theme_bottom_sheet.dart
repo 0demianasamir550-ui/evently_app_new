@@ -26,10 +26,10 @@ class _themeBottomSheetState extends State<themeBottomSheet> {
         vertical: height * 0.02,
       ),
       child: Column(
-        mainAxisSize: MainAxisSize.min, // ياخد مساحة المحتوى بس
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // English
+
           InkWell(
             onTap: () {
               themeProvider.changeTheme(ThemeMode.dark);
@@ -43,7 +43,7 @@ class _themeBottomSheetState extends State<themeBottomSheet> {
             ),
           ),
           SizedBox(height: height * 0.02),
-          // Arabic
+
           InkWell(
             onTap: () {
               themeProvider.changeTheme(ThemeMode.light);
@@ -61,7 +61,7 @@ class _themeBottomSheetState extends State<themeBottomSheet> {
     );
   }
 
-  /// العنصر المختار (مع العلامة ✓)
+
   Widget getSelectedItemWidget({required String language}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -79,7 +79,7 @@ class _themeBottomSheetState extends State<themeBottomSheet> {
     );
   }
 
-  /// العنصر الغير مختار (من غير علامة ✓)
+
   Widget getUnselectedItemWidget({required String language}) {
     return Text(
       language,

@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// صفحة عرض المستطيلات فقط مع مساحة فارغة أعلى وأسفل
+
 class EventDemoScreen extends StatelessWidget {
   const EventDemoScreen({super.key});
 
@@ -58,10 +58,10 @@ class EventDemoScreen extends StatelessWidget {
       backgroundColor: isDark ? Colors.black87 : Colors.white,
       body: Column(
         children: [
-          // مساحة فارغة أعلى
+
           SizedBox(height: 40),
 
-          // المستطيلات قابلة للتمرير
+
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -88,8 +88,8 @@ class EventDemoScreen extends StatelessWidget {
                     textLabel: AppLocalizations.of(context)!.meetingText,
                   ),
                   const SizedBox(height: 16),
-                  // يمكن إضافة مستطيلات أكثر هنا
-                  SizedBox(height: 80), // مساحة فارغة أسفل بدل Bottom
+
+                  SizedBox(height: 80),
                 ],
               ),
             ),
@@ -100,7 +100,7 @@ class EventDemoScreen extends StatelessWidget {
   }
 }
 
-// المستطيل الواحد (EventCardWidget)
+
 class EventCardWidget extends StatefulWidget {
   final String imagePath;
   final String number;
@@ -138,14 +138,14 @@ class _EventCardWidgetState extends State<EventCardWidget> {
       ),
       child: Stack(
         children: [
-          // الصورة الخلفية
+
           Positioned.fill(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: Image.asset(widget.imagePath, fit: BoxFit.cover),
             ),
           ),
-          // المربع الصغير بالرقم والكلمة
+
           Positioned(
             top: 8,
             left: 8,
@@ -171,7 +171,7 @@ class _EventCardWidgetState extends State<EventCardWidget> {
               ),
             ),
           ),
-          // المستطيل السفلي للنص والقلب
+
           Positioned(
             bottom: 0,
             left: 0,

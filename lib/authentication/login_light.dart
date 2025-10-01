@@ -4,19 +4,11 @@ import 'package:provider/provider.dart';
 import 'package:evently_app_new/providers/app_theme.dart';
 import 'package:evently_app_new/providers/app_language_provider.dart';
 import 'package:evently_app_new/l10n/app_localizations.dart';
-
-// لو عندك صفحات register/forget في نفس المجلد
 import 'register_light.dart';
 import 'forget_password_light.dart';
-
-// شاشة الرئيسية (التي استدعيتها سابقاً باسم MyAppWidget)
 import 'package:evently_app_new/home/home_screen.dart';
-
-// <-- استدعي ال widget الخاصة بيكي هنا
-// المسار التالي يفترض الملف under lib/home/widgets/language_toggle.dart
 import 'package:evently_app_new/home/widgets/language_toggle.dart';
 
-/// ------------------ CustomBox Widget ------------------
 class CustomBox extends StatelessWidget {
   final double width;
   final double height;
@@ -54,7 +46,6 @@ class CustomBox extends StatelessWidget {
   }
 }
 
-/// ------------------ LoginPage ------------------
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -85,7 +76,6 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
 
-    // لو كل حاجة صح، يروح للصفحة الرئيسية
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (_) => const MyAppWidget()),
@@ -110,16 +100,12 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: Column(
                 children: [
-                  // spacer top
                   SizedBox(
                     width: double.infinity,
                     height: 48,
                     child: Container(color: backgroundColor),
                   ),
-
                   const SizedBox(height: 8),
-
-                  // logo
                   Center(
                     child: SizedBox(
                       width: 152,
@@ -132,10 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-
                   const SizedBox(height: 4),
-
-                  // Evently title (غير const عشان يتأثر بالـ Localization لو احتجتي)
                   Text(
                     loc.evently,
                     textAlign: TextAlign.center,
@@ -148,10 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                       color: Color(0xFF5669FF),
                     ),
                   ),
-
                   const SizedBox(height: 20),
-
-                  // Email
                   CustomBox(
                     child: Row(
                       children: [
@@ -171,10 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
-
                   const SizedBox(height: 16),
-
-                  // Password
                   CustomBox(
                     child: Row(
                       children: [
@@ -205,10 +182,7 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
-
                   const SizedBox(height: 4),
-
-                  // Forget Password
                   Align(
                     alignment: Alignment.centerRight,
                     child: Padding(
@@ -231,10 +205,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-
                   const SizedBox(height: 24),
-
-                  // Login button
                   SizedBox(
                     width: 361,
                     height: 56,
@@ -252,10 +223,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-
                   const SizedBox(height: 16),
-
-                  // Don't Have Account + Create Account
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -284,10 +252,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ],
                   ),
-
                   const SizedBox(height: 16),
-
-                  // OR line
                   Row(
                     children: [
                       Expanded(
@@ -310,16 +275,12 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ],
                   ),
-
                   const SizedBox(height: 16),
-
-                  // Google login (النص الآن من الـ localization)
                   SizedBox(
                     width: 361,
                     height: 56,
                     child: ElevatedButton(
                       onPressed: () {
-                        // TODO: اترفعي لوجيك Google sign-in هنا
                         debugPrint('Login with Google');
                       },
                       style: ElevatedButton.styleFrom(
@@ -335,7 +296,7 @@ class _LoginPageState extends State<LoginPage> {
                           Image.asset('assets/images/google_icon.png', width: 24, height: 24),
                           const SizedBox(width: 8),
                           Text(
-                            loc.login_with_google, // <-- يتغير مع اللغة
+                            loc.login_with_google,
                             style: const TextStyle(
                               color: Color(0xFF5669FF),
                               fontWeight: FontWeight.bold,
@@ -345,18 +306,13 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-
                   const SizedBox(height: 24),
-
-                  // ================= LanguageToggle widget (from your file) =================
-                  // استخدمي نفس واجهة الـ widget اللي انتِ عملتيها: selectedLanguage & onChanged
                   LanguageToggle(
                     selectedLanguage: languageProvider.appLanguage,
                     onChanged: (lang) {
                       languageProvider.changeLanguage(lang);
                     },
                   ),
-
                   const SizedBox(height: 24),
                 ],
               ),

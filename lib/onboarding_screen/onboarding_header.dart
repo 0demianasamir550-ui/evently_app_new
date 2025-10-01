@@ -7,7 +7,7 @@ class OnboardingHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // المربع مع اللوجو
+
         Positioned(
           top: 47.18,
           left: 114.18,
@@ -21,7 +21,7 @@ class OnboardingHeader extends StatelessWidget {
           ),
         ),
 
-        // كلمة Evently
+
         Positioned(
           top: 65.0,
           left: 175,

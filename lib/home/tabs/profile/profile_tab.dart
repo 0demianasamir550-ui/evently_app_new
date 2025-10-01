@@ -78,14 +78,14 @@ class _ProfileTabState extends State<ProfileTab> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            /// Language Title
+
             Text(
               AppLocalizations.of(context)!.language,
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             SizedBox(height: height * 0.02),
 
-            /// Language Container
+
             InkWell(
               onTap: () {
                 showLanguageBottomSheet();
@@ -123,14 +123,14 @@ class _ProfileTabState extends State<ProfileTab> {
 
             SizedBox(height: height * 0.04),
 
-            /// Theme Title
+
             Text(
               AppLocalizations.of(context)!.theme,
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             SizedBox(height: height * 0.02),
 
-            /// Theme Container
+
             InkWell(
               onTap: () {
                 showThemeBottomSheet();
@@ -170,15 +170,15 @@ class _ProfileTabState extends State<ProfileTab> {
               padding: EdgeInsets.symmetric(
                 vertical: height * 0.02,
                 horizontal: width * 0.04,
-              ), /// رفع بسيط للزرار
+              ),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.redColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  padding: EdgeInsets.symmetric(vertical: height * 0.01), // نفس سمك المستطيلات
-                  minimumSize: Size(double.infinity, 0), // الحفاظ على نفس العرض
+                  padding: EdgeInsets.symmetric(vertical: height * 0.01),
+                  minimumSize: Size(double.infinity, 0),
                 ),
                 onPressed: () {},
                 child: Row(

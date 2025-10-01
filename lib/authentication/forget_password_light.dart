@@ -16,7 +16,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   final emailController = TextEditingController();
   String? emailError;
 
-  // ✅ تعديل RegExp لقبول أي إيميل صالح
+
   bool isValidEmail(String email) {
     return RegExp(r'^[\w-\.]+@[\w-]+\.[a-zA-Z]{2,}$').hasMatch(email);
   }
@@ -41,7 +41,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
               child: Column(
                 children: [
                   const SizedBox(height: 120),
-                  // السهم + العنوان
+
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: SizedBox(
@@ -86,7 +86,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                     ),
                   ),
                   const SizedBox(height: 24),
-                  // الصورة
+
                   Center(
                     child: SizedBox(
                       width: 361,
@@ -97,7 +97,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                       ),
                     ),
                   ),
-                  // مستطيل Email يظهر فقط في dark theme
+
                   if (isDark)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -129,7 +129,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                               ],
                             ),
                           ),
-                          // رسالة الخطأ
+
                           if (emailError != null)
                             Padding(
                               padding: const EdgeInsets.only(top: 8, left: 16),
@@ -141,7 +141,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                         ],
                       ),
                     ),
-                  // زر Reset Password يظهر دائمًا
+
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                     child: GestureDetector(
@@ -149,7 +149,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                         final email = emailController.text.trim();
                         if (isDark && !isValidEmail(email)) {
                           setState(() {
-                            emailError = "Invalid email"; // بالعربي: "البريد الإلكتروني غير صحيح"
+                            emailError = "Invalid email";
                           });
                         } else {
                           setState(() {
@@ -190,7 +190,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   }
 }
 
-// ==================== main ====================
+
 void main() {
   runApp(
     MultiProvider(

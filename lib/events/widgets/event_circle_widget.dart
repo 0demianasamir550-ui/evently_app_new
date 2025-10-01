@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// ---------------- Event Oval ----------------
+
 class EventOvalLarge extends StatelessWidget {
   final IconData icon;
   final String label;
@@ -104,7 +104,7 @@ class EventOvalLarge extends StatelessWidget {
   }
 }
 
-// ---------------- Event Categories List ----------------
+
 class EventCategoriesList extends StatefulWidget {
   const EventCategoriesList({super.key});
 
@@ -113,7 +113,7 @@ class EventCategoriesList extends StatefulWidget {
 }
 
 class _EventCategoriesListState extends State<EventCategoriesList> {
-  int selectedIndex = 0; // افتراضي bookclub
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
@@ -185,7 +185,7 @@ class _EventCategoriesListState extends State<EventCategoriesList> {
           ),
         ),
         const SizedBox(height: 12),
-        // -------- قائمة الدوائر --------
+
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(

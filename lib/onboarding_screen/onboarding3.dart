@@ -11,7 +11,7 @@ class OnboardingScreen3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<AppThemeProvider>(context);
-    final loc = AppLocalizations.of(context)!; // ✅ استدعاء localization
+    final loc = AppLocalizations.of(context)!;
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -22,7 +22,7 @@ class OnboardingScreen3 extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // ===== Logo + Evently =====
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -35,7 +35,7 @@ class OnboardingScreen3 extends StatelessWidget {
                   ),
                   const SizedBox(width: 10),
                   Text(
-                    loc.evently, // ✅ استخدم localization
+                    loc.evently,
                     style: const TextStyle(
                       fontFamily: 'Jockey One',
                       fontWeight: FontWeight.w400,
@@ -50,7 +50,7 @@ class OnboardingScreen3 extends StatelessWidget {
 
               const SizedBox(height: 30),
 
-              // ===== الصورة الكبيرة ديناميكية حسب الـ Theme =====
+
               Center(
                 child: Image.asset(
                   themeProvider.isDarkMode()
@@ -64,9 +64,9 @@ class OnboardingScreen3 extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              // ===== الجملة الرئيسية =====
+
               Text(
-                loc.effortless_event_planning, // ✅ استدعاء من localization
+                loc.effortless_event_planning,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontFamily: 'Inter',
@@ -80,9 +80,9 @@ class OnboardingScreen3 extends StatelessWidget {
 
               const SizedBox(height: 25),
 
-              // ===== الجملة الثانية حسب الـ Theme =====
+
               Text(
-                loc.take_the_hassle_out_of_organizing, // ✅ استدعاء من localization
+                loc.take_the_hassle_out_of_organizing,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Inter',
@@ -95,11 +95,11 @@ class OnboardingScreen3 extends StatelessWidget {
 
               const Spacer(),
 
-              // ===== النقاط الثلاثة =====
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(3, (index) {
-                  bool isActive = index == 1; // النقطة الثانية ملونة
+                  bool isActive = index == 1;
                   return Container(
                     margin: const EdgeInsets.symmetric(horizontal: 8),
                     width: 12,
@@ -114,11 +114,11 @@ class OnboardingScreen3 extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              // ===== الأسهم =====
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // سهم يسار → العودة للصفحة الثانية
+
                   InkWell(
                     onTap: () {
                       Navigator.push(
@@ -146,7 +146,7 @@ class OnboardingScreen3 extends StatelessWidget {
                     ),
                   ),
 
-                  // سهم يمين → الانتقال للصفحة الرابعة
+
                   InkWell(
                     onTap: () {
                       Navigator.push(

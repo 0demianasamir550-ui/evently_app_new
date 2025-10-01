@@ -5,7 +5,7 @@ import 'package:evently_app_new/providers/app_theme.dart';
 import 'package:evently_app_new/providers/app_language_provider.dart';
 import 'package:evently_app_new/l10n/app_localizations.dart';
 import 'login_light.dart';
-import '../home/widgets/language_toggle.dart'; // ✅ استدعاء لغة
+import '../home/widgets/language_toggle.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -22,7 +22,7 @@ class RegisterPage extends StatelessWidget {
         final iconColor = isDark ? Colors.white : const Color(0xFF7B7B7B);
         final textColor = isDark ? Colors.white : const Color(0xFF7B7B7B);
 
-        // Controllers
+
         final nameController = TextEditingController();
         final emailController = TextEditingController();
         final passwordController = TextEditingController();
@@ -33,10 +33,10 @@ class RegisterPage extends StatelessWidget {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                // AppBar وهمي
+
                 SizedBox(width: double.infinity, height: 48, child: Container(color: appBarColor)),
                 const SizedBox(height: 8),
-                // Header السهم + Register
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Row(
@@ -68,7 +68,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                // المربع مع الصورة
+
                 Center(
                   child: SizedBox(
                     width: 152,
@@ -95,7 +95,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 24),
-                // المستطيلات الأربعة
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
@@ -137,7 +137,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 24),
-                // زر Create Account
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: GestureDetector(
@@ -164,7 +164,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                // Already Have Account
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -201,7 +201,7 @@ class RegisterPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
 
-                // ✅ Language Toggle
+
                 LanguageToggle(
                   selectedLanguage: languageProvider.appLanguage,
                   onChanged: (lang) {
@@ -218,7 +218,7 @@ class RegisterPage extends StatelessWidget {
   }
 }
 
-// ==================== main ====================
+
 void main() {
   runApp(
     MultiProvider(

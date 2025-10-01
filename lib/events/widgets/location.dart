@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:evently_app_new/providers/app_theme.dart';
 
-// ---------------- MAIN ----------------
+
 void main() {
   runApp(
     ChangeNotifierProvider(
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// ---------------- WIDGET ----------------
+
 class LocationWidget extends StatefulWidget {
   final String? selectedLocation;
   final ValueChanged<String>? onLocationChanged;
@@ -70,7 +70,7 @@ class _LocationWidgetState extends State<LocationWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // -------- Label --------
+
         Text(
           "Location",
           style: TextStyle(
@@ -84,7 +84,7 @@ class _LocationWidgetState extends State<LocationWidget> {
         ),
         const SizedBox(height: 8),
 
-        // -------- Rectangle --------
+
         Container(
           width: double.infinity,
           height: 62,

@@ -5,7 +5,7 @@ import 'package:evently_app_new/providers/app_language_provider.dart';
 import 'package:evently_app_new/l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-// ---------------- MAIN ----------------
+
 void main() {
   runApp(
     MultiProvider(
@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// ---------------- WIDGET ----------------
+
 class EventTimeWidget extends StatefulWidget {
   final TimeOfDay? selectedTime;
   final ValueChanged<TimeOfDay>? onTimeChanged;
@@ -86,7 +86,7 @@ class _EventTimeWidgetState extends State<EventTimeWidget> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // أيقونة وتقريب النص على اليسار
+
           Row(
             children: [
               Icon(Icons.access_time,
@@ -102,7 +102,7 @@ class _EventTimeWidgetState extends State<EventTimeWidget> {
               ),
             ],
           ),
-          // Choose Time أو الوقت المختار على اليمين
+
           GestureDetector(
             onTap: () async {
               final TimeOfDay now = TimeOfDay.now();

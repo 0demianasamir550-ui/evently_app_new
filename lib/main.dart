@@ -14,7 +14,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => AppLanguageProvider()),
         ChangeNotifierProvider(create: (_) => AppThemeProvider()),
       ],
-      child: MyApp(), // ✅ كما طلبت، حذف const
+      child: MyApp(), 
     ),
   );
 }
@@ -22,7 +22,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // نحصل على القيم المحدثة من الـ Providers
+
     var languageProvider = Provider.of<AppLanguageProvider>(context);
     var themeProvider = Provider.of<AppThemeProvider>(context);
 
@@ -30,14 +30,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.homeRouteName,
       routes: {
-        AppRoutes.homeRouteName: (context) => MyAppWidget(), // ✅ كما طلبت، حذف const
+        AppRoutes.homeRouteName: (context) => MyAppWidget(),
       },
       locale: Locale(languageProvider.appLanguage),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: themeProvider.isDarkMode() ? ThemeMode.dark : ThemeMode.light, // ✅ استخدام isDarkMode() من Provider
+      themeMode: themeProvider.isDarkMode() ? ThemeMode.dark : ThemeMode.light,
     );
   }
 }

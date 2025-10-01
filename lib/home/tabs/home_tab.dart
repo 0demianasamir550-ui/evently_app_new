@@ -4,7 +4,7 @@ import 'package:evently_app_new/providers/app_theme.dart';
 import 'package:evently_app_new/providers/app_language_provider.dart';
 import 'package:evently_app_new/l10n/app_localizations.dart';
 
-import '../widgets/event_card_widget.dart'; // ✅ ملف الـ widget
+import '../widgets/event_card_widget.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -44,7 +44,7 @@ class _HomeTabState extends State<HomeTab> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Header
+
           Container(
             width: double.infinity,
             padding: const EdgeInsets.only(left: 16, right: 16, top: 40, bottom: 16),
@@ -66,7 +66,7 @@ class _HomeTabState extends State<HomeTab> {
                         style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white)),
                     Row(
                       children: [
-                        // أيقونة الشمس
+
                         GestureDetector(
                           onTap: () {
                             showModalBottomSheet(
@@ -81,7 +81,7 @@ class _HomeTabState extends State<HomeTab> {
                           ),
                         ),
                         const SizedBox(width: 10),
-                        // المربع الخاص باللغة
+
                         GestureDetector(
                           onTap: () {
                             showModalBottomSheet(
@@ -121,7 +121,7 @@ class _HomeTabState extends State<HomeTab> {
                   ],
                 ),
                 const SizedBox(height: 16),
-                // Capsules
+
                 SizedBox(
                   height: 50,
                   child: ListView.builder(
@@ -180,7 +180,7 @@ class _HomeTabState extends State<HomeTab> {
             ),
           ),
           const SizedBox(height: 16),
-          // Content (Cards بدل النص الفاضي)
+
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -267,7 +267,7 @@ class _HomeTabState extends State<HomeTab> {
   }
 }
 
-// ==================== main ====================
+
 void main() {
   runApp(
     MultiProvider(

@@ -25,10 +25,10 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
         vertical: height * 0.02,
       ),
       child: Column(
-        mainAxisSize: MainAxisSize.min, // ياخد مساحة المحتوى بس
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // English
+
           InkWell(
             onTap: () {
               languageProvider.changeLanguage('en');
@@ -42,7 +42,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
             ),
           ),
           SizedBox(height: height * 0.02),
-          // Arabic
+
           InkWell(
             onTap: () {
               languageProvider.changeLanguage('ar');
@@ -60,7 +60,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
     );
   }
 
-  /// العنصر المختار (مع العلامة ✓)
+
   Widget getSelectedItemWidget({required String language}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -78,7 +78,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
     );
   }
 
-  /// العنصر الغير مختار (من غير علامة ✓)
+
   Widget getUnselectedItemWidget({required String language}) {
     return Text(
       language,

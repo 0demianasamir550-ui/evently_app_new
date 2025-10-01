@@ -25,28 +25,28 @@ class MapTab extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          /// الخريطة
+
           const GoogleMap(
             initialCameraPosition: CameraPosition(
-              target: LatLng(30.0444, 31.2357), // Cairo, Egypt
+              target: LatLng(30.0444, 31.2357),
               zoom: 12,
             ),
           ),
 
-          /// زرار فوق (زي العين في الصورة)
+
           Positioned(
             top: 100,
             right: 20,
             child: FloatingActionButton(
               backgroundColor: Colors.blue,
               onPressed: () {
-                // هنا تضيف الأكشن اللي عايزه
+
               },
               child: const Icon(Icons.remove_red_eye),
             ),
           ),
 
-          /// الكارد اللي تحت
+
           Positioned(
             bottom: 20,
             left: 20,

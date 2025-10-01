@@ -12,12 +12,12 @@ class OnboardingScreen4 extends StatelessWidget {
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<AppThemeProvider>(context);
 
-    // اختيار الصورة حسب Theme
+
     String imagePath = themeProvider.isDarkMode()
         ? 'assets/images/image_four_dark.png'
         : 'assets/images/image_four.png';
 
-    // جلب الترجمات
+
     var loc = AppLocalizations.of(context)!;
 
     return Scaffold(
@@ -30,7 +30,7 @@ class OnboardingScreen4 extends StatelessWidget {
             children: [
               const SizedBox(height: 16),
 
-              // Logo + Evently
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -58,7 +58,7 @@ class OnboardingScreen4 extends StatelessWidget {
 
               const SizedBox(height: 30),
 
-              // الصورة الكبيرة حسب Theme
+
               Center(
                 child: Image.asset(
                   imagePath,
@@ -70,7 +70,7 @@ class OnboardingScreen4 extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              // الجملة الأولى
+
               Text(
                 loc.connect_with_friends,
                 textAlign: TextAlign.center,
@@ -86,7 +86,7 @@ class OnboardingScreen4 extends StatelessWidget {
 
               const SizedBox(height: 10),
 
-              // الجملة الثانية
+
               Text(
                 loc.share_moments_with_friends,
                 textAlign: TextAlign.center,
@@ -101,11 +101,11 @@ class OnboardingScreen4 extends StatelessWidget {
 
               const Spacer(),
 
-              // Pagination Dots
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(3, (index) {
-                  bool isActive = index == 2; // الصفحة الرابعة → آخر نقطة
+                  bool isActive = index == 2;
                   return Container(
                     margin: const EdgeInsets.symmetric(horizontal: 8),
                     width: 12,
@@ -120,11 +120,11 @@ class OnboardingScreen4 extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              // أسهم العودة والانتقال
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // سهم العودة للصفحة الثالثة
+
                   InkWell(
                     onTap: () {
                       Navigator.push(
@@ -151,7 +151,7 @@ class OnboardingScreen4 extends StatelessWidget {
                     ),
                   ),
 
-                  // سهم للـ Login Page
+
                   InkWell(
                     onTap: () {
                       Navigator.pushReplacement(

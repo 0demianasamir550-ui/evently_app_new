@@ -5,7 +5,7 @@ import 'package:evently_app_new/providers/app_language_provider.dart';
 import 'package:evently_app_new/home/tabs/profile/profile_tab.dart';
 import 'package:evently_app_new/home/tabs/profile/favorite_tab.dart';
 import 'package:evently_app_new/home/tabs/home_tab.dart';
-import 'package:evently_app_new/events/create_event.dart'; // ✅ صفحة CreateEventPage
+import 'package:evently_app_new/events/create_event.dart';
 
 class MyAppWidget extends StatefulWidget {
   const MyAppWidget({super.key});
@@ -107,7 +107,7 @@ class _MyAppWidgetState extends State<MyAppWidget> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>  CreateEventPage()), // ✅ استدعاء CreateEventPage
+                  MaterialPageRoute(builder: (context) =>  CreateEventPage()),
                 );
               },
               child: Container(

@@ -5,7 +5,7 @@ import 'package:evently_app_new/providers/app_language_provider.dart';
 import 'package:evently_app_new/l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-// ---------------- MAIN ----------------
+
 void main() {
   runApp(
     MultiProvider(
@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// ---------------- WIDGET ----------------
+
 class EventDateWidget extends StatefulWidget {
   final DateTime? selectedDate;
   final ValueChanged<DateTime>? onDateChanged;
