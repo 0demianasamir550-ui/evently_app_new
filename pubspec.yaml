@@ -51,6 +51,8 @@ dependencies:
 
   # مكتبة الخطوط من جوجل
   google_fonts: ^6.2.1
+  firebase_core: ^4.1.1
+  cloud_firestore: ^6.0.2
 
 dev_dependencies:
   flutter_test:

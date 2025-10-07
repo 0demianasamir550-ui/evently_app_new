@@ -7,14 +7,29 @@ import 'utils/app_routes.dart';
 import 'utils/app_theme.dart';
 import 'l10n/app_localizations.dart';
 
-void main() {
+// Firebase imports
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // تهيئة Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  // تعطيل الشبكة في Firestore
+  await FirebaseFirestore.instance.disableNetwork();
+
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AppLanguageProvider()),
         ChangeNotifierProvider(create: (_) => AppThemeProvider()),
       ],
-      child: MyApp(), 
+      child: MyApp(),
     ),
   );
 }
@@ -22,7 +37,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     var languageProvider = Provider.of<AppLanguageProvider>(context);
     var themeProvider = Provider.of<AppThemeProvider>(context);
 
