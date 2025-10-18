@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:evently_app_new/providers/app_theme.dart';
 import 'package:evently_app_new/providers/app_language_provider.dart';
 import 'package:evently_app_new/l10n/app_localizations.dart';
+// ✅ السطر المضاف
+import '../utils/alret_utils.dart';
 import 'login_light.dart';
 import '../home/widgets/language_toggle.dart';
 
@@ -22,7 +24,6 @@ class RegisterPage extends StatelessWidget {
         final iconColor = isDark ? Colors.white : const Color(0xFF7B7B7B);
         final textColor = isDark ? Colors.white : const Color(0xFF7B7B7B);
 
-
         final nameController = TextEditingController();
         final emailController = TextEditingController();
         final passwordController = TextEditingController();
@@ -33,7 +34,6 @@ class RegisterPage extends StatelessWidget {
           body: SingleChildScrollView(
             child: Column(
               children: [
-
                 SizedBox(width: double.infinity, height: 48, child: Container(color: appBarColor)),
                 const SizedBox(height: 8),
 
@@ -142,9 +142,17 @@ class RegisterPage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.pushReplacement(
+                      // ✅ Alert Dialog بدل SnackBar
+                      AlertUtils.showConfirmDialog(
                         context,
-                        MaterialPageRoute(builder: (_) => const LoginPage()),
+                        title: "Confirm Registration",
+                        message: "Are you sure you want to create this account?",
+                        onConfirm: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (_) => const LoginPage()),
+                          );
+                        },
                       );
                     },
                     child: Container(
@@ -201,7 +209,6 @@ class RegisterPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
 
-
                 LanguageToggle(
                   selectedLanguage: languageProvider.appLanguage,
                   onChanged: (lang) {
@@ -217,7 +224,6 @@ class RegisterPage extends StatelessWidget {
     );
   }
 }
-
 
 void main() {
   runApp(

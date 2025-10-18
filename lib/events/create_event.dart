@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+// يجب التأكد من مسار هذه الملفات
 import 'package:evently_app_new/events/widgets/event_circle_widget.dart';
 import 'package:evently_app_new/events/widgets/event_date.dart';
 import 'package:evently_app_new/events/widgets/event_time.dart';
@@ -10,8 +11,10 @@ import 'package:evently_app_new/providers/app_theme.dart';
 import 'package:evently_app_new/providers/app_language_provider.dart';
 import 'package:evently_app_new/l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+// ملاحظة: تم إزالة استيراد FirestoreService لأنه لم يعد مستخدماً مباشرة هنا
 
 void main() {
+  // *ملاحظة:* في تطبيقك الحقيقي يجب تهيئة Firebase هنا (Firebase.initializeApp()).
   runApp(
     MultiProvider(
       providers: [
@@ -63,6 +66,11 @@ class _CreateEventPageState extends State<CreateEventPage> {
   TimeOfDay? selectedTime;
   String? selectedLocation;
 
+  String? selectedCategoryLabel;
+  String? selectedCategoryImage; // رابط الصورة (URL) أو مسارها المحلي
+
+  // *ملاحظة:* تم حذف _isLoading و _saveEvent
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<AppThemeProvider>(context);
@@ -94,7 +102,19 @@ class _CreateEventPageState extends State<CreateEventPage> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                const EventCategoriesList(),
+
+                // ✅ تمرير الدالة لتحديث الفئة والصورة
+                EventCategoriesList(
+                  onCategorySelected: (label, image) {
+                    setState(() {
+                      selectedCategoryLabel = label;
+                      selectedCategoryImage = image;
+                    });
+                  },
+                ),
+
+                // *ملاحظة:* يمكنك إضافة زر لاختيار الصورة هنا وتحديث selectedCategoryImage
+
                 const SizedBox(height: 24),
                 RectangleTitleDescriptionWidget(
                   titleController: titleController,
@@ -128,14 +148,20 @@ class _CreateEventPageState extends State<CreateEventPage> {
                   },
                 ),
                 const SizedBox(height: 24),
+
+                // ✅ زرار الإضافة (بدون onPressed)
                 AddEventButton(
                   titleController: titleController,
                   descriptionController: descriptionController,
                   selectedDate: selectedDate,
                   selectedTime: selectedTime,
                   selectedLocation: selectedLocation,
+                  categoryLabel: selectedCategoryLabel,
+                  categoryImage: selectedCategoryImage,
                   buttonText: localizations.edit_event,
+                  // تم حذف onPressed لتجنب الخطأ
                 ),
+
                 const SizedBox(height: 24),
               ],
             ),

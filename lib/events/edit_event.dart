@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:evently_app_new/events/widgets/event_circle_widget.dart';
+import 'package:evently_app_new/events/widgets/event_categories_list.dart';
 import 'package:evently_app_new/events/widgets/event_date.dart';
 import 'package:evently_app_new/events/widgets/event_time.dart';
 import 'package:evently_app_new/events/widgets/rectangle_title_description.dart';
@@ -10,19 +10,25 @@ import 'package:evently_app_new/l10n/app_localizations.dart';
 import 'event_details.dart';
 
 class EditEventPage extends StatefulWidget {
+  final String? eventId; // 🔹 معرف الحدث للتحديث
   final String? title;
   final String? description;
   final DateTime? date;
   final TimeOfDay? time;
   final String? location;
+  final String? categoryLabel;
+  final String? categoryImage;
 
   const EditEventPage({
     super.key,
+    this.eventId, // 🔹 جديد
     this.title,
     this.description,
     this.date,
     this.time,
     this.location,
+    this.categoryLabel,
+    this.categoryImage,
   });
 
   @override
@@ -35,6 +41,8 @@ class _EditEventPageState extends State<EditEventPage> {
   DateTime? selectedDate;
   TimeOfDay? selectedTime;
   String? selectedLocation;
+  String? selectedCategoryLabel;
+  String? selectedCategoryImage;
 
   @override
   void initState() {
@@ -44,6 +52,8 @@ class _EditEventPageState extends State<EditEventPage> {
     selectedDate = widget.date;
     selectedTime = widget.time;
     selectedLocation = widget.location;
+    selectedCategoryLabel = widget.categoryLabel;
+    selectedCategoryImage = widget.categoryImage;
   }
 
   @override
@@ -63,21 +73,25 @@ class _EditEventPageState extends State<EditEventPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 16),
-                SizedBox(
-                  width: double.infinity,
-                  child: Center(
-                    child: Text(
-                      localizations.edit_event,
-                      style: const TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFF5669FF),
-                      ),
+                Center(
+                  child: Text(
+                    localizations.edit_event,
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFF5669FF),
                     ),
                   ),
                 ),
                 const SizedBox(height: 16),
-                const EventCategoriesList(),
+                EventCategoriesList(
+                  onCategorySelected: (label, image) {
+                    setState(() {
+                      selectedCategoryLabel = label;
+                      selectedCategoryImage = image;
+                    });
+                  },
+                ),
                 const SizedBox(height: 24),
                 RectangleTitleDescriptionWidget(
                   titleController: titleController,

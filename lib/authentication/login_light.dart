@@ -6,8 +6,9 @@ import 'package:evently_app_new/providers/app_language_provider.dart';
 import 'package:evently_app_new/l10n/app_localizations.dart';
 import 'register_light.dart';
 import 'forget_password_light.dart';
-import 'package:evently_app_new/home/home_screen.dart';
+import 'package:evently_app_new/home/tabs/home_tab.dart';
 import 'package:evently_app_new/home/widgets/language_toggle.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class CustomBox extends StatelessWidget {
   final double width;
@@ -58,6 +59,8 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passwordController = TextEditingController();
   bool _obscurePassword = true;
 
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
   void handleLogin(AppLocalizations loc) {
     final email = emailController.text.trim();
     final password = passwordController.text;
@@ -78,8 +81,27 @@ class _LoginPageState extends State<LoginPage> {
 
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (_) => const MyAppWidget()),
+      MaterialPageRoute(builder: (_) => const HomeTab()),
     );
+  }
+
+  Future<void> handleGoogleSignIn() async {
+    try {
+      final account = await _googleSignIn.signIn();
+      if (account != null) {
+        print('Signed in as ${account.email}');
+        if (!mounted) return;
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const HomeTab()),
+        );
+      }
+    } catch (error) {
+      print('Google Sign-In error: $error');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Google Sign-In failed')),
+      );
+    }
   }
 
   @override
@@ -280,9 +302,7 @@ class _LoginPageState extends State<LoginPage> {
                     width: 361,
                     height: 56,
                     child: ElevatedButton(
-                      onPressed: () {
-                        debugPrint('Login with Google');
-                      },
+                      onPressed: handleGoogleSignIn,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         shape: RoundedRectangleBorder(

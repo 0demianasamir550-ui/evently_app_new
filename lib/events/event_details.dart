@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'edit_event.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EventDetailsPage extends StatelessWidget {
   final String title;
@@ -7,6 +8,7 @@ class EventDetailsPage extends StatelessWidget {
   final DateTime date;
   final TimeOfDay time;
   final String location;
+  final String? eventId; // 🔹 لإضافة إمكانية تعديل/حذف الحدث في Firestore
 
   const EventDetailsPage({
     super.key,
@@ -15,7 +17,15 @@ class EventDetailsPage extends StatelessWidget {
     required this.date,
     required this.time,
     required this.location,
+    this.eventId,
   });
+
+  Future<void> _deleteEvent(BuildContext context) async {
+    if (eventId != null) {
+      await FirebaseFirestore.instance.collection('events').doc(eventId).delete();
+      Navigator.pop(context); // بعد الحذف نرجع للخلف
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +78,7 @@ class EventDetailsPage extends StatelessWidget {
                                 date: date,
                                 time: time,
                                 location: location,
+                                eventId: eventId, // 🔹 إرسال الـ eventId لتحديث Firestore
                               ),
                             ),
                           );
@@ -84,7 +95,9 @@ class EventDetailsPage extends StatelessWidget {
                       const SizedBox(width: 8),
                       IconButton(
                         icon: const Icon(Icons.delete, color: Colors.red),
-                        onPressed: () {},
+                        onPressed: () async {
+                          await _deleteEvent(context); // 🔹 حذف الحدث
+                        },
                       ),
                     ],
                   ),
@@ -93,7 +106,7 @@ class EventDetailsPage extends StatelessWidget {
 
               const SizedBox(height: 16),
 
-              // ✅ الصورة بعد Event Details
+              // الصورة
               Image.asset(
                 "assets/images/bookclub.png",
                 width: double.infinity,
@@ -103,7 +116,7 @@ class EventDetailsPage extends StatelessWidget {
 
               const SizedBox(height: 24),
 
-              // باقي المحتوى
+              // عنوان الحدث
               Text(
                 title,
                 style: const TextStyle(
@@ -116,6 +129,7 @@ class EventDetailsPage extends StatelessWidget {
 
               const SizedBox(height: 24),
 
+              // التاريخ والوقت
               Container(
                 width: double.infinity,
                 height: 64,
@@ -149,6 +163,7 @@ class EventDetailsPage extends StatelessWidget {
 
               const SizedBox(height: 12),
 
+              // المكان
               Container(
                 width: double.infinity,
                 height: 64,
@@ -174,6 +189,7 @@ class EventDetailsPage extends StatelessWidget {
 
               const SizedBox(height: 16),
 
+              // خريطة افتراضية
               Container(
                 width: double.infinity,
                 height: 250,
@@ -189,6 +205,7 @@ class EventDetailsPage extends StatelessWidget {
 
               const SizedBox(height: 16),
 
+              // الوصف
               Text(
                 description,
                 style: TextStyle(fontSize: 16, color: descriptionColor),

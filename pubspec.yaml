@@ -41,6 +41,12 @@ dependencies:
   google_maps_flutter: ^2.6.0
   shared_preferences:  ^2.1.1
   image_picker: ^0.8.7+5
+  url_launcher: ^6.2.1
+
+  # 🔹 إضافات Firebase الأساسية
+
+
+
 
 
 

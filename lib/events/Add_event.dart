@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:evently_app_new/events/widgets/event_circle_widget.dart';
+import 'package:evently_app_new/events/widgets/event_circle_widget.dart' hide EventCategoriesList;
 import 'package:evently_app_new/events/widgets/event_date.dart';
 import 'package:evently_app_new/events/widgets/event_time.dart';
 import 'package:evently_app_new/events/widgets/rectangle_title_description.dart';
@@ -8,6 +8,7 @@ import 'package:evently_app_new/events/widgets/location.dart';
 import 'package:evently_app_new/providers/app_theme.dart';
 import 'package:evently_app_new/l10n/app_localizations.dart';
 import 'event_details.dart';
+import 'package:evently_app_new/events/widgets/event_categories_list.dart'; // تأكد من استدعاء هذا الملف
 
 class AddEventPage extends StatefulWidget {
   final String? title;
@@ -35,6 +36,8 @@ class _AddEventPageState extends State<AddEventPage> {
   DateTime? selectedDate;
   TimeOfDay? selectedTime;
   String? selectedLocation;
+  String? selectedCategoryLabel;
+  String? selectedCategoryImage;
 
   @override
   void initState() {
@@ -77,7 +80,15 @@ class _AddEventPageState extends State<AddEventPage> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                const EventCategoriesList(),
+                // تم إزالة const هنا
+                EventCategoriesList(
+                  onCategorySelected: (label, image) {
+                    setState(() {
+                      selectedCategoryLabel = label;
+                      selectedCategoryImage = image;
+                    });
+                  },
+                ),
                 const SizedBox(height: 24),
                 RectangleTitleDescriptionWidget(
                   titleController: titleController,

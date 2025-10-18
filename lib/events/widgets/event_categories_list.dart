@@ -1,65 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:evently_app_new/l10n/app_localizations.dart';
-import 'package:evently_app_new/providers/app_language_provider.dart';
-import 'package:evently_app_new/providers/app_theme.dart';
-
-void main() {
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => AppThemeProvider()),
-        ChangeNotifierProvider(create: (_) => AppLanguageProvider()),
-      ],
-      child: const MyApp(),
-    ),
-  );
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final themeProvider = Provider.of<AppThemeProvider>(context);
-    final languageProvider = Provider.of<AppLanguageProvider>(context);
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color(0xFF101127),
-      ),
-      themeMode: themeProvider.isDarkMode() ? ThemeMode.dark : ThemeMode.light,
-      locale: Locale(languageProvider.appLanguage),
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en'),
-        Locale('ar'),
-      ],
-      home: Scaffold(
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: EventCategoriesList(
-              onCategorySelected: (label, image) {
-                // هنا تقدر تاخد اسم الفئة والصورة
-                print('Selected category: $label');
-                print('Image path: $image');
-              },
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
+import '../../l10n/app_localizations.dart';
+import '../../providers/app_theme.dart';
 
 class EventOvalLarge extends StatelessWidget {
   final IconData icon;
@@ -110,9 +52,9 @@ class EventOvalLarge extends StatelessWidget {
 }
 
 class EventCategoriesList extends StatefulWidget {
-  final Function(String label, String image) onCategorySelected;
+  final Function(String label, String image)? onCategorySelected;
 
-  const EventCategoriesList({super.key, required this.onCategorySelected});
+  const EventCategoriesList({super.key, this.onCategorySelected});
 
   @override
   State<EventCategoriesList> createState() => _EventCategoriesListState();
@@ -143,6 +85,7 @@ class _EventCategoriesListState extends State<EventCategoriesList> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const SizedBox(height: 16),
+        // -------- الصورة --------
         Center(
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
@@ -155,6 +98,7 @@ class _EventCategoriesListState extends State<EventCategoriesList> {
           ),
         ),
         const SizedBox(height: 12),
+
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -168,10 +112,13 @@ class _EventCategoriesListState extends State<EventCategoriesList> {
                     setState(() {
                       selectedIndex = idx;
                     });
-                    widget.onCategorySelected(
-                      category["label"] as String,
-                      category["image"] as String,
-                    );
+                    // إرسال البيانات عند اختيار الفئة
+                    if (widget.onCategorySelected != null) {
+                      widget.onCategorySelected!(
+                        category["label"] as String,
+                        category["image"] as String,
+                      );
+                    }
                   },
                   child: EventOvalLarge(
                     icon: category["icon"] as IconData,
